@@ -112,6 +112,7 @@ This is a basic restful authentication generator for rails, taken from
 acts as authenticated.  Currently it requires Rails 1.2.6 or above.
 
 **IMPORTANT FOR RAILS > 2.1 USERS** To avoid a @NameError@ exception ("lighthouse tracker ticket":http://rails_security.lighthouseapp.com/projects/15332-restful_authentication/tickets/2-not-a-valid-constant-name-errors#ticket-2-2), check out the code to have an _underscore_ and not _dash_ in its name:
+
 * either use <code>git clone git://github.com/technoweenie/restful-authentication.git restful_authentication</code>
 * or rename the plugin's directory to be <code>restful_authentication</code> after fetching it.
 
@@ -135,31 +136,31 @@ To use the generator:
   controller that handles the actual login/logout function on the site.
   (probably: "Session").
 
-* --include-activation: Generates the code for a ActionMailer and its respective
+* %--include-activation%: Generates the code for a ActionMailer and its respective
   Activation Code through email.
 
-* --stateful: Builds in support for acts_as_state_machine and generates
-  activation code.  (@ --stateful@ implies@ --include-activation@). Based on the
+* %--stateful%: Builds in support for acts_as_state_machine and generates
+  activation code.  (@--stateful@ implies@--include-activation@). Based on the
   idea at [[http://www.vaporbase.com/postings/stateful_authentication]]. Passing
-  @ --skip-migration@ will skip the user migration, and@ --skip-routes@ will skip
+  @--skip-migration@ will skip the user migration, and@--skip-routes@ will skip
   resource generation -- both useful if you've already run this generator.
   (Needs the "acts_as_state_machine plugin":http://elitists.textdriven.com/svn/plugins/acts_as_state_machine/,
-  but new installs should probably run with @ --aasm@ instead.)
+  but new installs should probably run with @--aasm@ instead.)
 
-* --aasm: Works the same as stateful but uses the "updated aasm gem":http://github.com/rubyist/aasm/tree/master
+* %--aasm%: Works the same as stateful but uses the "updated aasm gem":http://github.com/rubyist/aasm/tree/master
 
-* --rspec: Generate RSpec tests and Stories in place of standard rails tests.
+* %--rspec%: Generate RSpec tests and Stories in place of standard rails tests.
   This requires the
     "RSpec and Rspec-on-rails plugins":http://rspec.info/
   (make sure you "./script/generate rspec" after installing RSpec.)  The rspec
   and story suite are much more thorough than the rails tests, and changes are
   unlikely to be backported.
 
-* --old-passwords: Use the older password scheme (see [[#COMPATIBILITY]], above)
+* %--old-passwords%: Use the older password scheme (see [[#COMPATIBILITY]], above)
 
-* --skip-migration: Don't generate a migration file for this model
+* %--skip-migration%: Don't generate a migration file for this model
 
-* --skip-routes: Don't generate a resource line in @config/routes.rb@
+* %--skip-routes%: Don't generate a resource line in @config/routes.rb@
 
 ***************************************************************************
 <a id="POST-INSTALL"/> </a>
@@ -176,7 +177,7 @@ alter to suit. There are additional security minutae in @notes/README-Tradeoffs@
     map.logout '/logout', :controller => 'session', :action => 'destroy'
 </code></pre>
 
-* With @ --include-activation@, also add to your @config/routes.rb@:
+* With @--include-activation@, also add to your @config/routes.rb@:
 
 <pre><code>    map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
 </code></pre>
@@ -205,7 +206,7 @@ alter to suit. There are additional security minutae in @notes/README-Tradeoffs@
     </code></pre>
 
 
-* With @ --stateful@, add an observer to config/environment.rb:
+* With @--stateful@, add an observer to config/environment.rb:
 
     <pre><code>
     config.active_record.observers = :user_observer
