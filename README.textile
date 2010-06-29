@@ -62,7 +62,7 @@ h3. Stories
 
 There are now "Cucumber":http://wiki.github.com/aslakhellesoy/cucumber/home features that allow expressive, enjoyable tests for the authentication code. The flexible code for resource testing in stories was extended from "Ben Mabey's.":http://www.benmabey.com/2008/02/04/rspec-plain-text-stories-webrat-chunky-bacon/
 
-h3. Modularize to match security design patterns:
+h3. Modularized to Match Security Design Patterns
 
 * Authentication (currently: password, browser cookie token, HTTP basic)
 * Trust metric (email validation)
@@ -78,7 +78,11 @@ h3. Other
 
 ***************************************************************************
 
-h2. Non-backwards compatible Changes
+<a name="COMPATIBILITY">
+
+h2. Non-Backwards Compatible Changes
+
+</a>
 
 Here are a few changes in the May 2008 release that increase "Defense in Depth" but may require changes to existing accounts
 
@@ -125,13 +129,13 @@ To use the generator:
 
 * %--include-activation%: Generates the code for a ActionMailer and its respective Activation Code through email.
 
-* %--stateful%: Builds in support for acts_as_state_machine and generates activation code. (@--stateful@ implies@--include-activation@). Based on the idea at [[http://www.vaporbase.com/postings/stateful_authentication]]. Passing @--skip-migration@ will skip the user migration, and@--skip-routes@ will skip resource generation %--% both useful if you've already run this generator. (Needs the "acts_as_state_machine plugin":http://elitists.textdriven.com/svn/plugins/acts_as_state_machine/, but new installs should probably run with @--aasm@ instead.)
+* %--stateful%: Builds in support for acts_as_state_machine and generates activation code. (@--stateful@ implies @--include-activation@). Based on the "VaporBase Stateful Authentication post":http://www.vaporbase.com/postings/stateful_authentication . Passing @--skip-migration@ will skip the user migration, and@--skip-routes@ will skip resource generation %--% both useful if you've already run this generator. (Needs the "acts_as_state_machine plugin":http://elitists.textdriven.com/svn/plugins/acts_as_state_machine/, but new installs should probably run with @--aasm@ instead.)
 
 * %--aasm%: Works the same as stateful but uses the "updated aasm gem":http://github.com/rubyist/aasm/tree/master
 
 * %--rspec%: Generate RSpec tests and Stories in place of standard rails tests. This requires the "RSpec and Rspec-on-rails plugins":http://rspec.info/ (make sure you "./script/generate rspec" after installing RSpec.) The rspec and story suite are much more thorough than the rails tests, and changes are unlikely to be backported.
 
-* %--old-passwords%: Use the older password scheme (see [[#COMPATIBILITY]], above)
+* %--old-passwords%: Use the older password scheme (see "Non-Backwards Compatible Changes":#COMPATIBILITY, above)
 
 * %--skip-migration%: Don't generate a migration file for this model
 
@@ -141,7 +145,7 @@ To use the generator:
 
 <a name="POST-INSTALL">
 
-h2. After installing
+h2. After Installing
 
 </a>
 
