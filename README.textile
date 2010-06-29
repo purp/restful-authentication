@@ -117,6 +117,7 @@ acts as authenticated.  Currently it requires Rails 1.2.6 or above.
 
 To use the generator:
 
+<pre><code>
   ./script/generate authenticated user sessions \
     --include-activation \
     --stateful \
@@ -124,6 +125,7 @@ To use the generator:
     --skip-migration \
     --skip-routes \
     --old-passwords
+</code></pre>
 
 * The first parameter specifies the model that gets created in signup (typically
   a user or account model).  A model with migration is created, as well as a
@@ -137,12 +139,12 @@ To use the generator:
   Activation Code through email.
 
 * --stateful: Builds in support for acts_as_state_machine and generates
-  activation code.  (@--stateful@ implies @--include-activation@). Based on the
+  activation code.  (@ --stateful@ implies@ --include-activation@). Based on the
   idea at [[http://www.vaporbase.com/postings/stateful_authentication]]. Passing
-  @--skip-migration@ will skip the user migration, and @--skip-routes@ will skip
+  @ --skip-migration@ will skip the user migration, and@ --skip-routes@ will skip
   resource generation -- both useful if you've already run this generator.
   (Needs the "acts_as_state_machine plugin":http://elitists.textdriven.com/svn/plugins/acts_as_state_machine/,
-  but new installs should probably run with @--aasm@ instead.)
+  but new installs should probably run with @ --aasm@ instead.)
 
 * --aasm: Works the same as stateful but uses the "updated aasm gem":http://github.com/rubyist/aasm/tree/master
 
@@ -169,23 +171,20 @@ alter to suit. There are additional security minutae in @notes/README-Tradeoffs@
 
 * Add these familiar login URLs to your @config/routes.rb@ if you like:
 
-    <pre><code>
-    map.signup  '/signup', :controller => 'users',   :action => 'new'
+<pre><code>    map.signup  '/signup', :controller => 'users',   :action => 'new'
     map.login  '/login',  :controller => 'session', :action => 'new'
     map.logout '/logout', :controller => 'session', :action => 'destroy'
-    </code></pre>
+</code></pre>
 
-* With @--include-activation@, also add to your @config/routes.rb@:
+* With @ --include-activation@, also add to your @config/routes.rb@:
 
-    <pre><code>
-    map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
-    </code></pre>
+<pre><code>    map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
+</code></pre>
 
   and add an observer to @config/environment.rb@:
 
-    <pre><code>
-    config.active_record.observers = :user_observer
-    </code></pre>
+<pre><code>    config.active_record.observers = :user_observer
+</code></pre>
 
   Pay attention, may be this is not an issue for everybody, but if you should
   have problems, that the sent activation_code does match with that in the
@@ -206,7 +205,7 @@ alter to suit. There are additional security minutae in @notes/README-Tradeoffs@
     </code></pre>
 
 
-* With @--stateful@, add an observer to config/environment.rb:
+* With @ --stateful@, add an observer to config/environment.rb:
 
     <pre><code>
     config.active_record.observers = :user_observer
